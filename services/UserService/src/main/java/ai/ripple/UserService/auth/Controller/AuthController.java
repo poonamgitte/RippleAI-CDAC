@@ -18,7 +18,7 @@ import ai.ripple.UserService.auth.Dto.JwtResponse;
 import ai.ripple.UserService.auth.Dto.LoginRequest;
 import ai.ripple.UserService.auth.Entity.Account;
 import ai.ripple.UserService.auth.Entity.Role;
-import ai.ripple.UserService.auth.FileStorage.FileStorageService;
+import ai.ripple.UserService.auth.FileStorage.FileStorage;
 import ai.ripple.UserService.auth.Repository.AccountRepository;
 import ai.ripple.UserService.auth.Security.JwtUtil;
 
@@ -33,7 +33,7 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private FileStorageService fileStorageService;
+    private FileStorage fileStorageService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -57,7 +57,7 @@ public class AuthController {
 
         // Upload profile photo if exists
         if (dto.getProfilePhoto() != null && !dto.getProfilePhoto().isEmpty()) {
-            String fileUrl = fileStorageService.uploadFile(dto.getProfilePhoto(), "profile_photos");
+            String fileUrl = fileStorageService.uploadFile(dto.getProfilePhoto(), "ripple/profile_photos");
             account.setProfilePhotoUrl(fileUrl);
         }
 

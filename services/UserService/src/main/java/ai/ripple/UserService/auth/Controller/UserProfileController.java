@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import ai.ripple.UserService.auth.Entity.Account;
-import ai.ripple.UserService.auth.FileStorage.FileStorageService;
+import ai.ripple.UserService.auth.FileStorage.FileStorage;
 import ai.ripple.UserService.auth.Repository.AccountRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,7 +24,7 @@ public class UserProfileController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private FileStorageService fileStorageService;
+    private FileStorage fileStorageService;
 
     // ---------------------------------------------
     // Get user profile

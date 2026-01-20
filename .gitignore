@@ -1,6 +1,5 @@
 # Secrets
 *.env
-*.properties
 secret/
 certs/
 secrets/

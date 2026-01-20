@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ai.ripple.UserService.auth.Entity.Account;
 import ai.ripple.UserService.auth.Entity.Verification;
 import ai.ripple.UserService.auth.Entity.VerificationStatus;
-import ai.ripple.UserService.auth.FileStorage.FileStorageService;
+import ai.ripple.UserService.auth.FileStorage.FileStorage;
 import ai.ripple.UserService.auth.Repository.AccountRepository;
 import ai.ripple.UserService.auth.Repository.VerificationRepository;
 
@@ -29,7 +29,7 @@ public class NGOProfileController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private FileStorageService fileStorageService;
+    private FileStorage fileStorageService;
 
     // ---------------------------------------------
     // Get NGO profile

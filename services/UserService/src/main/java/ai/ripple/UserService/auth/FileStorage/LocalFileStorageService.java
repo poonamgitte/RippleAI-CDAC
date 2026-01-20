@@ -1,20 +1,24 @@
 package ai.ripple.UserService.auth.FileStorage;
 
-import java.nio.file.Files;
-
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@Service
-public class FileStorageService {
-    
-      private final String uploadDir = "uploads/";
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-      public String uploadFile(MultipartFile file, String folder) {
+@Service
+@ConditionalOnProperty(name = "storage.type", havingValue = "local")
+public class LocalFileStorageService implements FileStorage {
+
+    @Value("${local.upload-dir}")
+    private String uploadDir;
+
+    @Override
+    public String uploadFile(MultipartFile file, String folder) {
         try {
             Path dirPath = Paths.get(uploadDir + folder);
             if (!Files.exists(dirPath)) {
@@ -25,10 +29,10 @@ public class FileStorageService {
             Path filePath = dirPath.resolve(filename);
             Files.write(filePath, file.getBytes());
 
-            return "/" + uploadDir + folder + "/" + filename; // return relative path
+            return uploadDir + folder + "/" + filename;
+
         } catch (IOException e) {
-            throw new RuntimeException("Failed to upload file", e);
+            throw new RuntimeException("Local upload failed", e);
         }
     }
-
 }
