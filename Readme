@@ -1,63 +1,87 @@
-# AI-Powered Semi Social Media for Social Welfare
+# Ripple – NGO Social Media Platform
 
-A specialized social media platform designed to empower NGOs to run impactful campaigns. The platform leverages AI to transform social welfare initiatives into engaging, viral-style content—such as memes and entertaining posts—to encourage positive action and user engagement.
-
-The integrated AI assistant helps create, manage, and optimize posts while maintaining a positive, user-friendly environment.
+Ripple is a semi-social media platform built to help NGOs connect with users and promote social welfare campaigns. The platform allows NGOs to create posts, users to interact with campaigns, and admins to monitor activities.
 
 ---
+
 ## Technology Stack
 
-| Layer | Technology |
-| :--- | :--- |
-| **Backend** | Spring Boot (Microservices Architecture) |
-| **Messaging** | Apache Kafka (Event Streaming & Inter-service Communication) |
-| **Caching** | Redis (Fast Data Retrieval) |
-| **AI & Logic** | Python (Content Generation, Ranking, & Database Interaction) |
-| **Frontend** | React.js & Tailwind CSS |
+- Backend: Spring Boot (Microservices Architecture)
+- Frontend: React.js + Tailwind CSS
+- Database: MongoDB
+- Messaging: Apache Kafka
+- Caching: Redis
+- Authentication: JWT
+- Email Service: Spring Mail
 
 ---
 
 ## User Roles
 
-* **User**: Regular participants who consume content, interact with posts, and support NGO campaigns.
-* **NGO**: Organizations that initiate campaigns, utilize AI for content generation, and track engagement metrics.
-* **Admin**: Platform administrators responsible for monitoring activity, approving NGOs, and enforcing community policies.
+### User
+- View NGO posts and campaigns
+- Like and comment on posts
+- Manage personal profile
+- Create and Manage posts
+
+### NGO
+- Create and manage posts
+- Track engagement on posts
+- Manage campaign content
+
+### Admin
+- Approve NGOs
+- Monitor platform activities
+- Manage users and posts
 
 ---
 
-## Microservices Architecture
+## Microservices
 
-![Project Demo](https://raw.githubusercontent.com/shivShakya/RippleAI-CDAC/main/frontend/public/project-demo.jpeg)
+### User Service
+- User registration and login
+- OTP verification using Redis
+- JWT authentication
+- Role based access
 
+### Post Service
+- Create, update and delete posts
+- Publish post events using Kafka
 
-### 1. User Service
-* Manages registration, authentication, and secure login for all roles.
-* Stores user profiles, activity history, and preferences.
-* Implements **Role-Based Access Control (RBAC)** for permission management.
+### Feed Service
+- Displays posts in feed
+- Supports infinite scrolling
+- Real-time feed updates using SSE
+- Engagement handling (likes and comments)
 
-### 2. Post Service
-* Handles CRUD operations for posts and campaign content.
-* AI-driven evaluation for content positivity and social relevance.
-* Features an **AI Viral Engine** to identify and boost high-performing posts.
-* Includes a ranking and reward system for content creators.
-
-### 3. Notification Service
-* Delivers AI-generated creative content for high-engagement notifications.
-* Automated reminders for trending posts and upcoming NGO events using **Apache Kafka**.
-
-### 4. Feed Service
-* AI-powered comment filtering to mitigate negativity and cyberbullying.
-* Integrated reward system providing the **AI Viral Feature** to top-ranked users who post quality content, engage healthily, and take initiatives for social welfare.
+### Notification Service
+- Sends OTP emails
+- Sends notification emails
+- Stores OTP in Redis with expiry
 
 ---
 
 ## Key Features
 
-* **Role-Based Access Control**: Distinct workflows and secure permissions for Users, NGOs, and Admins.
-* **AI Content Management**: Automated content creation, scheduling, and posting logic.
-* **Positive Sentiment Promotion**: The AI Viral Engine prioritizes constructive and impactful content.
-* **Safe Interaction**: Advanced comment ranking system designed to reduce cyberbullying.
-* **Gamification**: Ranking and reward systems to motivate high-quality content creation and promote healthy social behavior.
+- JWT Based Authentication
+- OTP Email Verification
+- Role Based Dashboards
+- Infinite Scrolling Feed
+- Real-Time Feed Updates
+- Kafka Based Service Communication
+- Redis Caching
+
+---
+
+## Project Flow
+
+1. User registers using email and OTP verification  
+2. User logs in and receives JWT token  
+3. NGOs create posts  
+4. Posts are sent to Kafka and stored  
+5. Feed service displays posts to users  
+6. Users can like and comment on posts  
+7. Notifications are sent via email  
 
 ---
 
