@@ -1,6 +1,6 @@
-# Ripple – NGO Social Media Platform
+# RippleAI – NGO Social Media Platform
 
-Ripple is a semi-social media platform built to help NGOs connect with users and promote social welfare campaigns. The platform allows NGOs to create posts, users to interact with campaigns, and admins to monitor activities.
+RippleAI is a semi-social media platform built to help NGOs connect with users and promote social welfare campaigns. The platform allows NGOs to create posts, users to interact with campaigns, and admins to monitor activities.
 
 ---
 
@@ -77,7 +77,7 @@ Ripple is a semi-social media platform built to help NGOs connect with users and
 
 1. User registers using email and OTP verification  
 2. User logs in and receives JWT token  
-3. NGOs create posts  
+3. NGOs create posts using AI service 
 4. Posts are sent to Kafka and stored  
 5. Feed service displays posts to users  
 6. Users can like and comment on posts  
